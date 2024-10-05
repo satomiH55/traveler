@@ -1,3 +1,6 @@
+//= require jquery3
+//= require popper
+//= require bootstrap
 import { Application } from "@hotwired/stimulus"
 
 const application = Application.start()
