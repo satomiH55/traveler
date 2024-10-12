@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users, only:[:index, :show]
   get 'posts/new' # 削除
   post 'posts' => 'posts#create' # 削除
   resources :posts do
     resources :comments, only:[:create, :destroy]
+    resource :favorites, only:[:create, :destroy]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   post 'posts' => 'posts#create'
