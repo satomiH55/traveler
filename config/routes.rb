@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only:[:index, :show]
+  resources :users, only:[:index, :show, :edit, :update]
   get 'posts/new' # 削除
   post 'posts' => 'posts#create' # 削除
   resources :posts do
