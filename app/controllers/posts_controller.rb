@@ -20,6 +20,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post.increment!(:read_counts)
     @comment = Comment.new
     @comments = @post.comments.page(params[:page]).per(7).reverse_order
   end

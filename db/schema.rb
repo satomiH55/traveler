@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_19_110313) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_02_074317) do
+  create_table "books", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text "comment"
     t.integer "user_id"
@@ -35,6 +40,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_19_110313) do
     t.string "image_id"
     t.integer "user_id"
     t.integer "status", default: 0, null: false
+    t.integer "read_counts", default: 0
+  end
+
+  create_table "read_counts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_read_counts_on_book_id"
+    t.index ["user_id"], name: "index_read_counts_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -61,6 +76,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_19_110313) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "read_counts", "books"
+  add_foreign_key "read_counts", "users"
   add_foreign_key "relationships", "users", column: "followed_id"
   add_foreign_key "relationships", "users", column: "follower_id"
 end
