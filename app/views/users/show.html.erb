@@ -22,7 +22,24 @@
           <%= link_to 'フォローする', user_relationships_path(@user.id),  data: { turbo_method: :post }, class:"btn btn-success" %>
         </p>
       <% end %>
+    <% unless @user.id == current_user.id %>
+        <% if current_user.following?(@user) && @user.following?(current_user) %>
+          <% if @is_room %>
+            <p class="user-show-room">
+              <a href="/rooms/<%= @room_id %>" class="btn btn-primary btn-sm">DMを送る</a>
+            </p>
+          <% else %>
+            <%= form_for @room do |f| %>
+              <%= fields_for @entry do |e| %>
+                <%= e.hidden_field :user_id, value: @user.id %>
+              <% end %>
+              <%= f.submit "DMをはじめる", class: "btn btn-primary btn-sm" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
     <% end %>
+    
     <div class="d-flex w-100">
       <%= attachment_image_tag @user, :profile_image, size: '100x100', fallback: "no_image.svg", class: "mb-3 profile-img" %>
       <h4 class="ml-3 mb-3 card w-100 profile"><%= @user.profile %></h4>
