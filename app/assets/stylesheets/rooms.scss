@@ -1,0 +1,38 @@
+.cover-room-show {
+    height: 100%;
+    width: 100%;
+    background-image: url(/assets/mypage-scaled.jpg); // チャットルーム用の画像を指定
+    background-color: rgba(255, 255, 255, 0.4);
+    background-blend-mode: lighten;
+    background-size: 100% 100%;
+}
+
+.chat-container {
+    padding: 15px; // チャットコンテナのパディング
+}
+
+.message-table {
+    width: 100%;
+    border-collapse: collapse; // テーブルのセルを結合
+}
+
+.message-table th, .message-table td {
+    padding: 10px; // セルのパディング
+    text-align: left; // テキストを左寄せ
+}
+
+.message-table tr:nth-child(even) {
+    background-color: rgba(240, 240, 240, 0.5); // 偶数行に背景色を追加
+}
+
+.message-input {
+    margin-top: 20px; // メッセージ入力フォームのマージン
+}
+
+.form-text-field {
+    width: calc(100% - 100px); // ボタンの幅を引いた幅
+}
+
+.btn-success {
+    margin-left: 10px; // 送信ボタンのマージン
+}
