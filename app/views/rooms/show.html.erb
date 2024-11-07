@@ -8,31 +8,40 @@
   </div>
   
   <div class="row my-3">
-    <%= link_to "ユーザ一覧ページに戻る", users_path, class:"btn btn-secondary btn-sm" %>
+    <%= link_to "ユーザ一覧ページに戻る", users_path, class: "btn btn-secondary btn-sm" %>
   </div>
 
-  <div class="row">
-    <table class="table table-hover message-table">
+  <div class="row line-bc"> <!-- LINE会話全体を囲う -->
     <% if @messages.present? %>
       <% @messages.each do |m| %>
-        <tr>
-          <td><%= m.user.name %></td>
-          <td><%= m.message %></td>
-        </tr>
+        <% if @myUserId == m.user.id %>
+          <p style="text-align: right;"><%= m.user.name %></p>
+          <div class="balloon6">
+            <div class="chatting">
+              <div class="mycomment">
+                <p><%= m.message %></p>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <p style="text-align: left;"><%= m.user.name %></p>
+          <div class="says">
+            <p><%= m.message %></p>
+          </div>
+        <% end %>
       <% end %>
     <% else %>
       <tr>
         <td colspan="2">メッセージはまだありません。</td>
       </tr>
     <% end %>
-    </table>
   </div>
 
   <div class="row message-input">
     <%= form_for @message do |f| %>
-      <%= f.text_field :message, placeholder: "メッセージを入力して下さい", class:"form-text-field" %>
+      <%= f.text_field :message, placeholder: "メッセージを入力して下さい", class: "form-text-field" %>
       <%= f.hidden_field :room_id, value: @room.id %>
-      <%= f.submit "送信する", class:"btn btn-success" %>
+      <%= f.submit "送信する", class: "btn btn-success" %>
     <% end %>
   </div>
 </div>

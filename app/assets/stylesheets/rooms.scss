@@ -1,38 +1,113 @@
 .cover-room-show {
     height: 100%;
     width: 100%;
-    background-image: url(/assets/mypage-scaled.jpg); // チャットルーム用の画像を指定
+    background-image: url("/assets/mypage-scaled.jpg"); // チャットルーム用の画像を指定
     background-color: rgba(255, 255, 255, 0.4);
     background-blend-mode: lighten;
     background-size: 100% 100%;
-}
-
-.chat-container {
+  }
+  
+  .chat-container {
     padding: 15px; // チャットコンテナのパディング
-}
-
-.message-table {
+  }
+  
+  .line-bc {
+    padding: 20px 10px;
+    width: 100%;
+    margin: 15px auto;
+    text-align: left;
+    font-size: 14px;
+    background: #6dbec8;
+  }
+  
+  .message-table {
     width: 100%;
     border-collapse: collapse; // テーブルのセルを結合
-}
-
-.message-table th, .message-table td {
+  }
+  
+  .message-table th, .message-table td {
     padding: 10px; // セルのパディング
     text-align: left; // テキストを左寄せ
-}
-
-.message-table tr:nth-child(even) {
+  }
+  
+  .message-table tr:nth-child(even) {
     background-color: rgba(240, 240, 240, 0.5); // 偶数行に背景色を追加
-}
-
-.message-input {
+  }
+  
+  .message-input {
     margin-top: 20px; // メッセージ入力フォームのマージン
-}
-
-.form-text-field {
+  }
+  
+  .form-text-field {
     width: calc(100% - 100px); // ボタンの幅を引いた幅
-}
-
-.btn-success {
+  }
+  
+  .btn-success {
     margin-left: 10px; // 送信ボタンのマージン
-}
+  }
+  
+  /* 左側のコメントバルーン */
+  .balloon6 {
+    width: 100%;
+    margin: 10px 0;
+    overflow: hidden;
+  }
+  
+  .balloon6 .chatting {
+    width: 100%;
+    text-align: right;
+  }
+  
+  .says {
+    display: block;
+    position: relative;
+    margin: 10px 0 10px 10px; /* 上下左右にマージンを追加して余白を確保 */
+    padding: 10px;
+    max-width: 45%; /* 幅を広げてみる */
+    border-radius: 12px;
+    background: #edf1ee;
+  }
+  
+  .says:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 3px;
+    left: -19px;
+    border: 8px solid transparent;
+    border-right: 18px solid #edf1ee;
+    -webkit-transform: rotate(35deg);
+    transform: rotate(35deg);
+  }
+  
+  .says p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* 右側のコメントバルーン（緑色） */
+  .mycomment {
+    margin: 10px 0;
+  }
+  
+  .mycomment p {
+    display: block;
+    position: relative;
+    margin: 0 10px 0 0;
+    padding: 8px;
+    max-width: 45%; /* 幅を広げてみる */
+    border-radius: 12px;
+    background: #30e852;
+    font-size: 15px;
+  }
+  
+  .mycomment p:after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    right: -19px;
+    border: 8px solid transparent;
+    border-left: 18px solid #30e852;
+    -webkit-transform: rotate(-35deg);
+    transform: rotate(-35deg);
+  }
