@@ -11,103 +11,62 @@
     padding: 15px; // チャットコンテナのパディング
   }
   
-  .line-bc {
-    padding: 20px 10px;
-    width: 100%;
-    margin: 15px auto;
-    text-align: left;
-    font-size: 14px;
-    background: #6dbec8;
+  /* チャットメッセージ全体を囲む */
+.line-bc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    max-height: 70vh;
+    overflow-y: auto;
   }
   
-  .message-table {
-    width: 100%;
-    border-collapse: collapse; // テーブルのセルを結合
+  /* メッセージラップ要素 */
+  .message-wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 60%;
+    margin-bottom: 15px;
   }
   
-  .message-table th, .message-table td {
-    padding: 10px; // セルのパディング
-    text-align: left; // テキストを左寄せ
-  }
-  
-  .message-table tr:nth-child(even) {
-    background-color: rgba(240, 240, 240, 0.5); // 偶数行に背景色を追加
-  }
-  
-  .message-input {
-    margin-top: 20px; // メッセージ入力フォームのマージン
-  }
-  
-  .form-text-field {
-    width: calc(100% - 100px); // ボタンの幅を引いた幅
-  }
-  
-  .btn-success {
-    margin-left: 10px; // 送信ボタンのマージン
-  }
-  
-  /* 左側のコメントバルーン */
-  .balloon6 {
-    width: 100%;
-    margin: 10px 0;
-    overflow: hidden;
-  }
-  
-  .balloon6 .chatting {
-    width: 100%;
+  /* 自分のメッセージ */
+  .my-message {
+    align-self: flex-end; /* 右揃え */
     text-align: right;
   }
   
-  .says {
-    display: block;
-    position: relative;
-    margin: 10px 0 10px 10px; /* 上下左右にマージンを追加して余白を確保 */
-    padding: 10px;
-    max-width: 45%; /* 幅を広げてみる */
-    border-radius: 12px;
-    background: #edf1ee;
+  /* 相手のメッセージ */
+  .other-message {
+    align-self: flex-start; /* 左揃え */
+    text-align: left;
   }
   
-  .says:after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    top: 3px;
-    left: -19px;
-    border: 8px solid transparent;
-    border-right: 18px solid #edf1ee;
-    -webkit-transform: rotate(35deg);
-    transform: rotate(35deg);
+  /* 名前のスタイル */
+  .message-name {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
   }
   
-  .says p {
-    margin: 0;
-    padding: 0;
+  /* メッセージバルーンのスタイル */
+  .message-content {
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    word-wrap: break-word;
   }
   
-  /* 右側のコメントバルーン（緑色） */
-  .mycomment {
-    margin: 10px 0;
+  .my-message .message-content {
+    background-color: #dcf8c6;
+    border: 1px solid #b2d8b6;
   }
   
-  .mycomment p {
-    display: block;
-    position: relative;
-    margin: 0 10px 0 0;
-    padding: 8px;
-    max-width: 45%; /* 幅を広げてみる */
-    border-radius: 12px;
-    background: #30e852;
-    font-size: 15px;
-  }
-  
-  .mycomment p:after {
-    content: "";
-    position: absolute;
-    top: 3px;
-    right: -19px;
-    border: 8px solid transparent;
-    border-left: 18px solid #30e852;
-    -webkit-transform: rotate(-35deg);
-    transform: rotate(-35deg);
-  }
+  .other-message .message-content {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+  }  

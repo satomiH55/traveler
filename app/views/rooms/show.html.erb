@@ -1,43 +1,32 @@
-<div class="container cover-room-show"> 
-  <div class="row chat-container">
+<div class="container cover-room-show">
+  <div class="chat-container">
     <% @entries.each do |e| %>
       <% if @my_account != e.user.id %>
         <h4><strong><%= e.user.name %>さんとのトークルーム</strong></h4>
       <% end %>
     <% end %>
   </div>
-  
-  <div class="row my-3">
+
+  <div class="my-3">
     <%= link_to "ユーザ一覧ページに戻る", users_path, class: "btn btn-secondary btn-sm" %>
   </div>
 
-  <div class="row line-bc"> <!-- LINE会話全体を囲う -->
+  <div class="line-bc"> <!-- チャットメッセージの全体 -->
     <% if @messages.present? %>
       <% @messages.each do |m| %>
-        <% if @myUserId == m.user.id %>
-          <p style="text-align: right;"><%= m.user.name %></p>
-          <div class="balloon6">
-            <div class="chatting">
-              <div class="mycomment">
-                <p><%= m.message %></p>
-              </div>
-            </div>
-          </div>
-        <% else %>
-          <p style="text-align: left;"><%= m.user.name %></p>
-          <div class="says">
+        <div class="message-wrapper <%= @myUserId == m.user.id ? 'my-message' : 'other-message' %>">
+          <p class="message-name"><%= m.user.name %></p>
+          <div class="message-content">
             <p><%= m.message %></p>
           </div>
-        <% end %>
+        </div>
       <% end %>
     <% else %>
-      <tr>
-        <td colspan="2">メッセージはまだありません。</td>
-      </tr>
+      <p>メッセージはまだありません。</p>
     <% end %>
   </div>
 
-  <div class="row message-input">
+  <div class="message-input">
     <%= form_for @message do |f| %>
       <%= f.text_field :message, placeholder: "メッセージを入力して下さい", class: "form-text-field" %>
       <%= f.hidden_field :room_id, value: @room.id %>
