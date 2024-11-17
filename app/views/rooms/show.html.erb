@@ -2,7 +2,7 @@
   <div class="chat-container">
     <% @entries.each do |e| %>
       <% if @my_account != e.user.id %>
-        <h4><strong><%= e.user.name %>さんとのトークルーム</strong></h4>
+        <h4><strong><%= e.user.name %>さんとのチャットルーム</strong></h4>
       <% end %>
     <% end %>
   </div>
