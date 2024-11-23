@@ -37,7 +37,7 @@
 
   <div class="message-input">
     <%= form_for @message do |f| %>
-      <%= f.text_field :message, placeholder: "メッセージを入力して下さい！" , size: 80, class:"form-text-field" %>
+      <%= f.text_field :message, placeholder: "メッセージを入力して下さい" , size: 80, class:"form-text-field" %>
       <%= f.hidden_field :room_id, value: @room.id %>
       <%= f.submit "送信する", class: "btn btn-success" %>
     <% end %>
